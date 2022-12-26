@@ -1,0 +1,40 @@
+#include "tubes.h"
+
+int main()
+{
+    // DEKLARASI VARIABEL
+    int pilihan ;
+    antrian antri;
+    infotype data;
+    adr x;
+    createantrian(antri);
+
+    pilihan = printmenu();
+    while(pilihan != 0){
+        if (pilihan == 1) {
+            cout<<"#####Transaksi BANK Rispran#####"<<endl;
+            cout<<endl;
+            cout<<"Nama : ";
+            cin>>data.nama;
+            cout<<"Transaksi : ";
+            cin>>data.jenistransaksi;
+            cout<<"Jumlah : ";
+            cin>>data.nominal;
+            cout<<endl;
+            createelement(data, x);
+            masukantrian(antri, x);
+        }else if (pilihan == 2){
+            keluarantrian(antri, x);
+            cout<<"Berhasil menghapus 1 antrian"<<endl;
+            cout<<endl;
+        }
+        else if (pilihan == 3){
+            showpelanggan(antri);
+        }else {
+            cout<<"Tidak ada pilihan !"<<endl;
+            cout<<endl;
+        }
+        pilihan = printmenu();
+    }
+
+}

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1584205420 source:c:\users\risjad\documents\file icad\telkom university\semester 3\struktur data\materi\tubes\tubes_risjad_zhafran\main.cpp
+	<iostream>
+
+1672021002 source:c:\users\mrisj\documents\telkom\telkom university\semester 3\struktur data\materi\tubes_risjad_zhafran\tubes_risjad_zhafran\main.cpp
+	"tubes.h"
+
+1672023921 c:\users\mrisj\documents\telkom\telkom university\semester 3\struktur data\materi\tubes_risjad_zhafran\tubes_risjad_zhafran\tubes.h
+	<iostream>
+
+1672023746 source:c:\users\mrisj\documents\telkom\telkom university\semester 3\struktur data\materi\tubes_risjad_zhafran\tubes_risjad_zhafran\tubes.cpp
+	"tubes.h"
+
