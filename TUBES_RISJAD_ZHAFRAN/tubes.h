@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+
 #define nil NULL
 #define head(p) (p).head
 #define tail(p) (p).tail
@@ -21,23 +22,41 @@ struct infotype {
     int nomoryangdituju;
 };
 
+struct Stack {
+    string kode;
+    int jumlah;
+};
+
 struct element {
     infotype info;
+    Stack deposit[10];
     adr next;
+    int top;
 };
+
 
 struct antrian {
     adr head;
     adr tail;
 };
 
+// MENU
 int printmenu();
 int menu2();
+
+// QUEUE
 void createantrian(antrian &a);
 void createelement(infotype pelanggan, adr &adrpel);
 void masukantrian(antrian &a, adr adrpel);
 void keluarantrian(antrian &a, adr adrpel);
 void showpelanggan(antrian a);
+
+// STACK
+void createstack(Stack s);
+bool isfull(Stack s);
+void printinfo(Stack s);
+void push(Stack &s, int x);
+int pop(Stack &s);
 
 
 #endif // TUBES_H_INCLUDED
