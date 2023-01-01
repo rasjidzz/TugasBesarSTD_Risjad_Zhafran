@@ -6,13 +6,20 @@ using namespace std;
 
 
 #define nil NULL
+
+// Queue
 #define head(p) (p).head
 #define tail(p) (p).tail
 #define info(p) (p)->info
 #define next(p) (p)->next
 
+// Stack
+#define top(s) (s).top
+#define infos(s) (s).infos
+
 typedef struct element *adr;
 
+// INFOTYPE QUEUE
 struct infotype {
     string nama;
     string jenistransaksi;
@@ -22,16 +29,23 @@ struct infotype {
     int nomoryangdituju;
 };
 
-struct Stack {
-    string kode;
-    int jumlah;
+struct infotype2{
+    int urut;
+    int nominal;
 };
 
-struct element {
-    infotype info;
-    Stack deposit[10];
-    adr next;
+struct Stack{
+    infotype2 infos[10];
     int top;
+};
+
+struct element{
+    // QUEUE
+    infotype info;
+    adr next;
+    // STACK
+    Stack deposit[10];
+    //int top;
 };
 
 
@@ -43,6 +57,7 @@ struct antrian {
 // MENU
 int printmenu();
 int menu2();
+int menu3();
 
 // QUEUE
 void createantrian(antrian &a);
@@ -53,10 +68,11 @@ void showpelanggan(antrian a);
 
 // STACK
 void createstack(Stack s);
+bool isempty(Stack s);
 bool isfull(Stack s);
 void printinfo(Stack s);
-void push(Stack &s, int x);
-int pop(Stack &s);
+void push(Stack &s, infotype2 x);
+infotype2 pop(Stack &s);
 
 
 #endif // TUBES_H_INCLUDED
