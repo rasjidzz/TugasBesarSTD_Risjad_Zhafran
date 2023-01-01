@@ -83,8 +83,62 @@ int menu2(){
     cout<<"1. Transfer"<<endl;
     cout<<"2. Tarik Tunai"<<endl;
     cout<<"3. Top Up (Gopay/Shopee/Ovo/Dana)"<<endl;
+    cout<<"4. Tabungan Emas"<<endl;
     cout<<"Pilihan \t: ";
     cin>>pilih;
     cout<<endl;
     return pilih;
+}
+
+int menu3(){
+    int pilih2;
+    cout<<"##### Tabungan Emas #####"<<endl;
+    cout<<"1. Deposit Emas"<<endl;
+    cout<<"2. Cair Emas"<<endl;
+    cout<<"Pilihan \t:";
+    cin>>pilih2;
+    cout<<endl;
+    return pilih2;
+}
+
+// STACK
+void createstack(Stack s){
+    top(s) =0;
+}
+
+bool isempty(Stack s){
+    return top(s) == 0;
+}
+
+bool isfull(Stack s){
+    return top(s) == 10;
+}
+void printinfo(Stack s){
+    if (isempty(s)){
+        cout<<"Tabungan Emas Kosong !!!"<<endl;
+    }else{
+        while(top(s) != -1){
+            cout<<"Urutan ke-"<<infos(s)[top(s)].urut<<endl;
+            cout<<"Nominal Emas : "<<infos(s)[top(s)].nominal<<endl;
+            cout<<endl;
+            top(s)--;
+        }
+    }
+}
+
+void push(Stack &s, infotype2 x){
+    if(isfull(s)){
+        cout<<"Tabungan Emas Penuh"<<endl;
+    }else{
+        top(s) = top(s) + 1;
+        infos(s)[top(s)] = x;
+    }
+}
+infotype2 pop(Stack &s){
+    if(isempty(s)){
+        cout<<"Tabungan Emas Kosong !!!"<<endl;
+    }else{
+        top(s)--;
+    }
+    return infos(s)[top(s)+1];
 }
