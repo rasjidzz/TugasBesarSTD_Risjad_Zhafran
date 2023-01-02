@@ -7,6 +7,7 @@ int printmenu(){
     cout<<"2. Cek Antrian"<<endl;
     cout<<"3. Hapus Antrian"<<endl;
     cout<<"4. Cek Stack"<<endl;
+    cout<<"5. Pop Stack"<<endl;
     cout<<"0. Keluar Program"<<endl;
     cout<<endl;
     cout<<"Masukkan Pilihan : ";
@@ -95,7 +96,6 @@ int menu3(){
     int pilih2;
     cout<<"##### Tabungan Emas #####"<<endl;
     cout<<"1. Deposit Emas"<<endl;
-    cout<<"2. Cair Emas"<<endl;
     cout<<"Pilihan \t:";
     cin>>pilih2;
     cout<<endl;
@@ -130,14 +130,13 @@ void push(Stack &s, infotype2 infox){
     }
 }
 
-infotype2 pop(Stack &s){
+void pop(Stack &s){
     if(isempty(s) == true){
         cout<<"Stack Kosong !!!"<<endl;
         cout<<endl;
     }else{
         s.top--;
     }
-    return s.infos[top(s)+1];
 }
 
 void printStack(Stack s){
@@ -147,8 +146,7 @@ void printStack(Stack s){
     }else{
             while(top(s) != -1){
             cout<<"Nama \t: "<<infos(s)[top(s)].nama<<endl;
-            cout<<"Jumlah \t: "<<infos(s)[top(s)].nama<<endl;
-            cout<<"Urutan \t: "<<infos(s)[top(s)].nama<<endl;
+            cout<<"Jumlah \t: "<<infos(s)[top(s)].jumlah<<endl;
             cout<<endl;
             top(s)--;
         }
