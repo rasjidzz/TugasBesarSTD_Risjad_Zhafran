@@ -16,6 +16,7 @@ using namespace std;
 // Stack
 #define top(s) (s).top
 #define infos(s) (s).infos
+//#define nom(s) (s).nom
 
 typedef struct element *adr;
 
@@ -29,13 +30,16 @@ struct infotype {
     int nomoryangdituju;
 };
 
-struct infotype2{
-    int urut;
-    int nominal;
+struct tabungemas{
+    string nama;
+    int jumlah;
+    int urutan;
 };
 
+typedef tabungemas infotype2;
+
 struct Stack{
-    infotype2 infos[10];
+    infotype2 infos[5];
     int top;
 };
 
@@ -43,9 +47,6 @@ struct element{
     // QUEUE
     infotype info;
     adr next;
-    // STACK
-    Stack deposit[10];
-    //int top;
 };
 
 
@@ -70,9 +71,9 @@ void showpelanggan(antrian a);
 void createstack(Stack s);
 bool isempty(Stack s);
 bool isfull(Stack s);
-void printinfo(Stack s);
-void push(Stack &s, infotype2 x);
+infotype2 createinfo(string namax, int jumlahx, int urutanx);
+void push(Stack &s, infotype2 infox);
 infotype2 pop(Stack &s);
-
+void printStack(Stack s);
 
 #endif // TUBES_H_INCLUDED
