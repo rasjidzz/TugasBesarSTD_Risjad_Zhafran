@@ -1,90 +1,153 @@
 #include "tubes.h"
 
-int main()
-{
-    // DEKLARASI VARIABEL
-    int pilihan ;
-    antrian antri;
-    createantrian(antri);
-
-    // Data yang digunakan
-    string nama, tujuan;
-    int nik, norek, nominal;
-    infotype data_transfer;
-    adr adrpelanggan;
-    Stack s;
-
-    cout<<"####### Tugas Besar Struktur Data #######"<<endl;
-    cout<<"Muhammad Risjad Shidqi Febian & Zhafran Hafizh"<<endl;
+int printmenu(){
+    int pilihan;
+    cout<<"###### MENU BANK ######"<<endl;
+    cout<<"1. Daftar Antrian"<<endl;
+    cout<<"2. Cek Antrian"<<endl;
+    cout<<"3. Hapus Antrian"<<endl;
+    cout<<"4. Cek Stack"<<endl;
+    cout<<"0. Keluar Program"<<endl;
     cout<<endl;
+    cout<<"Masukkan Pilihan : ";
+    cin>>pilihan;
+    cout<<endl;
+    return pilihan;
+}
 
-    pilihan = printmenu();
-    while(pilihan != 0){
-        if (pilihan == 1){
-            int pil2;
-            cout<<"##### BANK RISPRAN #####"<<endl;
-            cout<<"##### Pendaftaran #####"<<endl;
-            cout<<"Nama \t: ";
-            cin>>nama;
-            cout<<"NIK \t: ";
-            cin>>nik;
-            pil2 = menu2();
-            if (pil2 == 1){
-                cout<<"##### Transfer Antar Bank #####"<<endl;
-                cout<<"Bank Tujuan\t\t: ";
-                cin>>tujuan;
-                cout<<"No Rekening\t\t: ";
-                cin>>norek;
-                cout<<"Nominal Transfer\t: ";
-                cin>>nominal;
-                data_transfer.nama = nama;
-                data_transfer.nik = nik;
-                data_transfer.jenistransaksi = "Transfer Antar Bank";
-                data_transfer.tujuan = tujuan;
-                data_transfer.nomoryangdituju = norek;
-                data_transfer.nominal = nominal;
-                createelement(data_transfer, adrpelanggan);
-                masukantrian(antri, adrpelanggan);
-            }else if(pil2 == 2){
-                cout<<"##### Tarik Tunai #####"<<endl;
-                cout<<"Nominal\t: ";
-                cin>>nominal;
-                data_transfer.nama = nama;
-                data_transfer.nik = nik;
-                data_transfer.jenistransaksi = "Tarik Tunai";
-                data_transfer.tujuan = "-";
-                data_transfer.nomoryangdituju = nil;
-                data_transfer.nominal = nominal;
-                createelement(data_transfer, adrpelanggan);
-                masukantrian(antri, adrpelanggan);
-            }else if (pil2 == 3){
-                cout<<"##### Top Up E-Wallet #####"<<endl;
-                cout<<"E-Wallet Tujuan\t: ";
-                cin>>tujuan;
-                cout<<"Nomor E-Wallet\t: ";
-                cin>>norek;
-                cout<<"Nominal\t\t: ";
-                cin>>nominal;
-                data_transfer.nama = nama;
-                data_transfer.nik = nik;
-                data_transfer.jenistransaksi = "Top Up E-Wallet";
-                data_transfer.tujuan = tujuan;
-                data_transfer.nomoryangdituju = norek;
-                data_transfer.nominal = nominal;
-                createelement(data_transfer, adrpelanggan);
-                masukantrian(antri, adrpelanggan);
-            }else if (pil2 == 4){
-                int pil3;
-                pil3 = menu3();
-            }
+void createantrian(antrian &a){
+    head(a) = nil;
+    tail(a) = nil;
+}
+
+void createelement(infotype pelanggan, adr &adrpel){
+    adrpel = new element;
+    info(adrpel) = pelanggan;
+    next(adrpel) = nil;
+}
+
+void masukantrian(antrian &a, adr adrpel){
+    // insert last
+    if(head(a) == nil && tail(a) == nil){
+        head(a) = adrpel;
+        tail(a) = adrpel;
+    }else{
+        next(tail(a)) = adrpel;
+        tail(a) = adrpel;
+    }
+}
+
+void keluarantrian(antrian &a, adr adrpel){
+    if (head(a) == nil && tail(a) == nil){
+        cout<<"Antrian Kosong !!!"<<endl;
+        cout<<endl;
+    }else if (head(a) == tail(a)){
+        adrpel = head(a);
+        head(a) = nil;
+        tail(a) = nil;
+    }else{
+        adrpel = head(a);
+        head(a) = next(head(a));
+        next(adrpel) = nil;
+    }
+}
+
+void showpelanggan(antrian a){
+    adr p;
+    p = head(a);
+    if (p == nil){
+        cout<<"Tidak ada antrian !!!"<<endl;
+        cout<<endl;
+    }else{
+        int i = 1;
+        cout<<"###################"<<endl;
+        while(p != nil){
+            cout<<"Antrian ke-"<<i<<endl;
+            cout<<"Nama Nasabah\t\t: "<<info(p).nama<<endl;
+            cout<<"NIK\t\t\t: "<<info(p).nik<<endl;
+            cout<<"Jenis Transaksi\t\t: "<<info(p).jenistransaksi<<endl;
+            cout<<"Bank / E-Wallet Tujuan\t: "<<info(p).tujuan<<endl;
+            cout<<"Nomor Tujuan\t\t: "<<info(p).nomoryangdituju<<endl;
+            cout<<"Nominal Transaksi\t: Rp."<<info(p).nominal<<endl;
             cout<<endl;
-        }else if (pilihan == 2){
-            showpelanggan(antri);
-        }else if (pilihan == 3){
-            keluarantrian(antri, adrpelanggan);
-            cout<<"Antrian pertama terhapus"<<endl;
-            cout<<endl;
+            p = next(p);
+            i++;
         }
-        pilihan = printmenu();
+        cout<<"###################"<<endl;
+    }
+}
+
+int menu2(){
+    int pilih;
+    //cout<<endl;
+    cout<<"###### MENU BANK ######"<<endl;
+    cout<<"1. Transfer"<<endl;
+    cout<<"2. Tarik Tunai"<<endl;
+    cout<<"3. Top Up (Gopay/Shopee/Ovo/Dana)"<<endl;
+    cout<<"4. Tabungan Emas"<<endl;
+    cout<<"Pilihan \t: ";
+    cin>>pilih;
+    cout<<endl;
+    return pilih;
+}
+
+int menu3(){
+    int pilih2;
+    cout<<"##### Tabungan Emas #####"<<endl;
+    cout<<"1. Deposit Emas"<<endl;
+    cout<<"2. Cair Emas"<<endl;
+    cout<<"Pilihan \t:";
+    cin>>pilih2;
+    cout<<endl;
+    return pilih2;
+}
+
+// STACK
+void createstack(Stack s){
+    top(s) = -1;
+}
+
+bool isempty(Stack s){
+    return top(s) == -1;
+}
+
+bool isfull(Stack s){
+    return top(s) == 5;
+}
+
+infotype2 createinfo(string namax, int jumlahx, int urutanx){
+    infotype2 newinfo;
+    newinfo.nama = namax;
+    newinfo.jumlah = jumlahx;
+    newinfo.urutan = urutanx;
+}
+
+void push(Stack &s, infotype2 infox){
+    if(isfull(s) == false){
+        top(s) = top(s) + 1;
+        s.infos[top(s)] = infox;
+    }
+}
+
+infotype2 pop(Stack &s){
+    if(isempty(s)){
+        cout<<"Stack Kosong !!!"<<endl;
+    }else{
+        s.top--;
+    }
+    return s.infos[top(s)+1];
+}
+
+void printStack(Stack s){
+    if (isempty(s)){
+        cout<<"Stack Kosong !!!"<<endl;
+    }else{
+            while(top(s) != -1){
+            cout<<"Nama \t: "<<infos(s)[top(s)].nama<<endl;
+            cout<<"Jumlah \t: "<<infos(s)[top(s)].nama<<endl;
+            cout<<"Urutan \t: "<<infos(s)[top(s)].nama<<endl;
+            cout<<endl;
+            top(s)--;
+        }
     }
 }
