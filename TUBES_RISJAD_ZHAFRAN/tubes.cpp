@@ -115,22 +115,19 @@ bool isfull(Stack s){
     return top(s) == 5;
 }
 
-infotype2 createinfo(string namax, int jumlahx, int urutanx){
+infotype2 createinfo(string namax, int jumlahx){
     infotype2 newinfo;
     newinfo.nama = namax;
     newinfo.jumlah = jumlahx;
-    newinfo.urutan = urutanx;
+//    newinfo.urutan = urutanx;
 }
 
 void push(Stack &s, infotype2 infox){
-    if(isfull(s) == false){
-        top(s) = top(s) + 1;
-        s.infos[top(s)] = infox;
-    }
+    cout << " _";
 }
 
 infotype2 pop(Stack &s){
-    if(isempty(s)){
+    if(isempty(s) == true){
         cout<<"Stack Kosong !!!"<<endl;
     }else{
         s.top--;
@@ -139,7 +136,7 @@ infotype2 pop(Stack &s){
 }
 
 void printStack(Stack s){
-    if (isempty(s)){
+    if (isempty(s) == false){
         cout<<"Stack Kosong !!!"<<endl;
     }else{
             while(top(s) != -1){
