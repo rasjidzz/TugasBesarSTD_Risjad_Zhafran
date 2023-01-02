@@ -103,7 +103,7 @@ int menu3(){
 }
 
 // STACK
-void createstack(Stack s){
+void createstack(Stack &s){
     top(s) = -1;
 }
 
@@ -119,16 +119,21 @@ infotype2 createinfo(string namax, int jumlahx){
     infotype2 newinfo;
     newinfo.nama = namax;
     newinfo.jumlah = jumlahx;
+    return newinfo;
 //    newinfo.urutan = urutanx;
 }
 
 void push(Stack &s, infotype2 infox){
-    cout << " _";
+    if (!isfull(s)){
+        top(s)++;
+        s.infos[s.top] = infox;
+    }
 }
 
 infotype2 pop(Stack &s){
     if(isempty(s) == true){
         cout<<"Stack Kosong !!!"<<endl;
+        cout<<endl;
     }else{
         s.top--;
     }
@@ -136,8 +141,9 @@ infotype2 pop(Stack &s){
 }
 
 void printStack(Stack s){
-    if (isempty(s) == false){
+    if (isempty(s)){
         cout<<"Stack Kosong !!!"<<endl;
+        cout<<endl;
     }else{
             while(top(s) != -1){
             cout<<"Nama \t: "<<infos(s)[top(s)].nama<<endl;
