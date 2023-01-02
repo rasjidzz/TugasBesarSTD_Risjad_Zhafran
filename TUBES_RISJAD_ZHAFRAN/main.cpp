@@ -79,13 +79,12 @@ int main()
                 int nomas;
                 pil3 = menu3();
                 if (pil3 == 1){
-                    infotype2 datax;
-                    cout<<"Nominal Emas \t: ";
-                    cin>>datax.jumlah;
-                    cout<<"Deposit ke \t: ";
-                    cin>>datax.urutan;
-                    datax.nama = nama;
-                    push(s, datax);
+                    string namax;
+                    int jumlahx;
+                    cout<<"Nominal Emas (kg) \t: ";
+                    cin>>jumlahx;
+                    namax = nama;
+                    push(s, createinfo(namax,jumlahx));
                 }
             }
             cout<<endl;
