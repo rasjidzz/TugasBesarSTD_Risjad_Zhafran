@@ -96,6 +96,8 @@ int main()
             cout<<endl;
         }else if (pilihan == 4){
             printStack(s);
+        }else if(pilihan == 5){
+            pop(s);
         }
         pilihan = printmenu();
     }
