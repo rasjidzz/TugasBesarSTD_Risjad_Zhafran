@@ -12,7 +12,13 @@ int main()
     int nik, norek, nominal;
     infotype data_transfer;
     adr adrpelanggan;
+    Stack s;
 
+    cout<<"####### Tugas Besar Struktur Data #######"<<endl;
+    cout<<"Muhammad Risjad Shidqi Febian & Zhafran Hafizh"<<endl;
+    cout<<endl;
+
+    createstack(s);
     pilihan = printmenu();
     while(pilihan != 0){
         if (pilihan == 1){
@@ -68,6 +74,19 @@ int main()
                 data_transfer.nominal = nominal;
                 createelement(data_transfer, adrpelanggan);
                 masukantrian(antri, adrpelanggan);
+            }else if (pil2 == 4){
+                int pil3;
+                int nomas;
+                pil3 = menu3();
+                if (pil3 == 1){
+                    infotype2 datax;
+                    cout<<"Nominal Emas \t: ";
+                    cin>>datax.jumlah;
+                    cout<<"Deposit ke \t: ";
+                    cin>>datax.urutan;
+                    datax.nama = nama;
+                    push(s, datax);
+                }
             }
             cout<<endl;
         }else if (pilihan == 2){
@@ -76,6 +95,8 @@ int main()
             keluarantrian(antri, adrpelanggan);
             cout<<"Antrian pertama terhapus"<<endl;
             cout<<endl;
+        }else if (pilihan == 4){
+            printStack(s);
         }
         pilihan = printmenu();
     }
