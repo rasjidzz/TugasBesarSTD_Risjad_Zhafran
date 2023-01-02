@@ -33,7 +33,7 @@ struct infotype {
 struct tabungemas{
     string nama;
     int jumlah;
-    int urutan;
+    //int urutan;
 };
 
 typedef tabungemas infotype2;
@@ -71,7 +71,7 @@ void showpelanggan(antrian a);
 void createstack(Stack s);
 bool isempty(Stack s);
 bool isfull(Stack s);
-infotype2 createinfo(string namax, int jumlahx, int urutanx);
+infotype2 createinfo(string namax, int jumlahx);
 void push(Stack &s, infotype2 infox);
 infotype2 pop(Stack &s);
 void printStack(Stack s);
