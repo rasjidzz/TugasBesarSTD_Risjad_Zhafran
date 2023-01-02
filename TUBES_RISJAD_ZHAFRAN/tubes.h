@@ -68,12 +68,12 @@ void keluarantrian(antrian &a, adr adrpel);
 void showpelanggan(antrian a);
 
 // STACK
-void createstack(Stack s);
+void createstack(Stack &s);
 bool isempty(Stack s);
 bool isfull(Stack s);
 infotype2 createinfo(string namax, int jumlahx);
 void push(Stack &s, infotype2 infox);
-infotype2 pop(Stack &s);
+void pop(Stack &s);
 void printStack(Stack s);
 
 #endif // TUBES_H_INCLUDED
